@@ -12,7 +12,7 @@ export class PrendaRepository {
 
     async createPrenda(createPrendaDto: CreatePrendaDto, session: ClientSession) {
         let prenda = new this.prendaModel({
-            _id:createPrendaDto._id,
+            id:createPrendaDto.id,
             nombre: createPrendaDto.nombre,
             precio:createPrendaDto.precio,
             descripcion:createPrendaDto.descripcion,
@@ -20,7 +20,8 @@ export class PrendaRepository {
             imagen:createPrendaDto.imagen,
             categorias:createPrendaDto.categorias,
             personalizacion:createPrendaDto.personalizacion,
-            estado:createPrendaDto.estado
+            estado:createPrendaDto.estado,
+            existencias:createPrendaDto.existencias,
         });
         try {
             prenda = await prenda.save({ session });
@@ -36,13 +37,22 @@ export class PrendaRepository {
         actualDate.toUTCString();
 
         const updateData = {
+            id:updatePrenda.id,
+            nombre: updatePrenda.nombre,
+            precio:updatePrenda.precio,
+            descripcion:updatePrenda.descripcion,
+            colores:updatePrenda.colores,
+            imagen:updatePrenda.imagen,
+            categorias:updatePrenda.categorias,
+            personalizacion:updatePrenda.personalizacion,
+            existencias:updatePrenda.existencias,
             estado: updatePrenda.estado,
         };
 
         let prenda;
         try {
             prenda = await this.prendaModel
-                .findOneAndUpdate({ _id: updatePrenda._id }, updateData, {
+                .findOneAndUpdate({ id: updatePrenda.id }, updateData, {
                     new: true,
                 })
                 .session(session)

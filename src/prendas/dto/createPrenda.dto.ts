@@ -3,7 +3,7 @@ import { Schema as MongooseSchema } from 'mongoose';
 
 export class CreatePrendaDto {
 
-    _id: string;
+    id: string;
     @IsOptional()
     nombre: string;
     @IsOptional()   
@@ -20,5 +20,7 @@ export class CreatePrendaDto {
     personalizacion: [string];
     @IsOptional()
     estado: string;
+    @IsOptional()
+    existencias: number;
 
 }

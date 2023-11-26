@@ -5,7 +5,7 @@ import { Document, Schema as MongooseSchema } from 'mongoose';
 @Schema()
 export class Prenda extends Document {
     @Prop({ type: String, required: true})
-    _id: string;
+    id: string;
 
     @Prop({ type: String })
     nombre: string;
@@ -16,8 +16,8 @@ export class Prenda extends Document {
     @Prop({ type: String })
     descripcion: string;
     
-    @Prop({ type: String })
-    existencias: string;
+    @Prop({ type: Number })
+    existencias: number;
 
     @Prop({ type: [String] })
     colores: string[];
