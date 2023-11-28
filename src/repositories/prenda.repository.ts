@@ -22,6 +22,7 @@ export class PrendaRepository {
             personalizacion:createPrendaDto.personalizacion,
             estado:createPrendaDto.estado,
             existencias:createPrendaDto.existencias,
+            tallas:createPrendaDto.tallas
         });
         try {
             prenda = await prenda.save({ session });
@@ -47,6 +48,7 @@ export class PrendaRepository {
             personalizacion:updatePrenda.personalizacion,
             existencias:updatePrenda.existencias,
             estado: updatePrenda.estado,
+            tallas:updatePrenda.tallas
         };
 
         let prenda;
