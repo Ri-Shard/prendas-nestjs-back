@@ -74,9 +74,10 @@ export class PrendaRepository {
     }
 
     async getPrendaById(id: String) {
+        const filter  = { id: id };
         let product;
         try {
-            product = await this.prendaModel.findById(id).exec();
+            product = await this.prendaModel.findOne(filter).exec();
         } catch (error) {
             throw new InternalServerErrorException(error);
         }
