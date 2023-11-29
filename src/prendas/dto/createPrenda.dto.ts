@@ -22,5 +22,7 @@ export class CreatePrendaDto {
     estado: string;
     @IsOptional()
     existencias: number;
+    @IsOptional()
+    tallas: [string];
 
 }
